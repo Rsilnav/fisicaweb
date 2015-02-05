@@ -1,5 +1,7 @@
-flask
-db_repository
-*.db
 *.pyc
-app/*.pyc
+venv
+.DS_Store
+blog
+*.db
+coverage
+tag.py

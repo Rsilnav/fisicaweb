@@ -1,3 +1,6 @@
 #!flask/bin/python
-from app import app
-app.run(debug=True)
+from project import app
+
+
+if __name__ == '__main__':
+    app.run()

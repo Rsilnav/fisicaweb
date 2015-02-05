@@ -1,7 +1,7 @@
 from flask.ext.testing import TestCase
 
-from app import app, db
-from app.models import User, BlogPost
+from project import app, db
+from project.models import User, BlogPost
 
 
 class BaseTestCase(TestCase):
@@ -11,12 +11,12 @@ class BaseTestCase(TestCase):
         app.config.from_object('config.TestConfig')
         return app
 
-    def test_index(self):
-        response = self.client.get('/', content_type='html/text')
-        self.assertEqual(response.status_code, 200)
-
     def setUp(self):
         db.create_all()
+        db.session.add(User("admin", "ad@min.com", "admin"))
+        db.session.add(
+            BlogPost("Test post", "This is a test. Only a test.", "admin"))
+        db.session.commit()
 
     def tearDown(self):
         db.session.remove()

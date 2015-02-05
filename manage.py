@@ -5,7 +5,7 @@ import coverage
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 
-from app import app, db
+from project import app, db
 
 
 app.config.from_object(os.environ['APP_SETTINGS'])
@@ -28,7 +28,7 @@ def cov():
     """Runs the unit tests with coverage."""
     cov = coverage.coverage(
         branch=True,
-        include='app/*'
+        include='project/*'
     )
     cov.start()
     tests = unittest.TestLoader().discover('tests')
