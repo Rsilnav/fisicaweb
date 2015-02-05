@@ -8,7 +8,13 @@ from flask.ext.migrate import Migrate, MigrateCommand
 from project import app, db
 
 
-app.config.from_object(os.environ['APP_SETTINGS'])
+if os.environ.get('APP_SETTINGS') is None:
+    app.config.from_object('config.TestConfig')
+else:
+    app.config.from_object(os.environ['APP_SETTINGS'])
+
+
+
 
 migrate = Migrate(app, db)
 manager = Manager(app)

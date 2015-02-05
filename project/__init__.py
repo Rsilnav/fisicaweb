@@ -16,7 +16,12 @@ app = Flask(__name__)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
-app.config.from_object(os.environ['APP_SETTINGS'])
+
+if os.environ.get('APP_SETTINGS') is None:
+	app.config.from_object('config.TestConfig')
+else:
+    app.config.from_object(os.environ['APP_SETTINGS'])
+
 db = SQLAlchemy(app)
 
 from project.users.views import users_blueprint

@@ -1,3 +1,4 @@
+import os
 from flask.ext.testing import TestCase
 
 from project import app, db
@@ -8,7 +9,10 @@ class BaseTestCase(TestCase):
     """A base test case."""
 
     def create_app(self):
-        app.config.from_object('config.TestConfig')
+        if os.environ.get('APP_SETTINGS') is None:
+            app.config.from_object('config.TestConfig')
+        else:
+            app.config.from_object(os.environ['APP_SETTINGS'])
         return app
 
     def setUp(self):
