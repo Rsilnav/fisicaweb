@@ -21,7 +21,7 @@ Please help us keep this free, open source project going. Purchase the [Real Pyt
 </a>
 
 <a href="http://www.uva.es/export/sites/uva/">
-	<img alt="Uva" src="http://miportal.uva.es/opencms/0.comun/3.imagen_corporativa/_imagenes/secundaria_roja.jpg"/>
+	<img src="http://placehold.it/350x150">
 </a>
 
 
